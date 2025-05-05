@@ -22,8 +22,8 @@ class Student {
      * REQUIRES: The fields specified above
      * EFFECTS:  Creates a new Student instance
      * RETURNS:  None
-     *
      * Constructor is called automatically when a new Student is created.
+     * Constructors are used to Create an object from a class
      * It sets up the name, year, email, and specialization.
      * 🔆🔆🔆 # is replaced with _ b/c it's an older version ie this#name is this._name
      */

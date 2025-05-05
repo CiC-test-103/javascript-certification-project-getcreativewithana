@@ -1,4 +1,4 @@
-//Deleted merge file "head"
+//Deleted merge file "head"/no more merge conflicts. 
 // Necessary Imports, DO NOT REMOVE
 const { LinkedList } = require("./LinkedList");
 const { Student } = require("./Student");
@@ -94,6 +94,7 @@ async function handleCommand(command) {
              *   - Grab the args (emailToFind)
              *   - Use implemented functions in LinkedList to grab the Student
              *   - Use implemented functions in Student to display if found, otherwise, state "Student does not exist"
+             *   🔆const emailToFind = args[0]; // get the email from input
              */
             const emailToFind = args[0];
             const found = studentManagementSystem.findStudent(emailToFind);

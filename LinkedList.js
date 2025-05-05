@@ -41,6 +41,8 @@ class LinkedList {
      * REQUIRES:  None
      * EFFECTS:   Creates a new LinkedList instance (empty)
      * RETURNS:   None
+     * 🔆To add debug: console.log("Linked list initialized: empty");
+     * 🔆To pass multiple nodes add values.forEach(value => this.append(value));}
      */
     constructor() {
         // TODO: Initialize an empty linked list
