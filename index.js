@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Necessary Imports, DO NOT REMOVE
 const { LinkedList } = require("./LinkedList");
 const { Student } = require('./Student')
@@ -162,3 +163,6 @@ rl.on('line', async (input) => {
 rl.on('close', () => {
   console.log('Goodbye!');
 });
+=======
+console.log('hello');
+>>>>>>> 8c58ce7fae02f9d88261a5dc9482b0c843f046b2
