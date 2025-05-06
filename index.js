@@ -48,7 +48,13 @@ async function handleCommand(command) {
              *  You will need to do the following:
              *   - Grab the args (code is given)
              *   - Use implemented functions in LinkedList to add the Student, and display the updated LinkedList
+             * You need 4 pieces of data to create a Student (Data, year, spec, email)
+             * ie. type add Alice 2 alicexample.com CS
+             * args = ["Alice", "2", "alicexample.com", "CS"];
+             * args.length === 4;
+             * But if you type just Alice 2 then args.length === 2; and is invlaid
              */
+
             if (args.length < 4) {
                 console.log("Invalid add command.");
                 break;
@@ -95,6 +101,8 @@ async function handleCommand(command) {
              *   - Use implemented functions in LinkedList to grab the Student
              *   - Use implemented functions in Student to display if found, otherwise, state "Student does not exist"
              *   🔆const emailToFind = args[0]; // get the email from input
+             * It returns the matching student object if found.
+             * Or it returns -1 if no student was found 
              */
             const emailToFind = args[0];
             const found = studentManagementSystem.findStudent(emailToFind);
@@ -140,6 +148,9 @@ async function handleCommand(command) {
              *  Clears all data in the Linked List
              *  You will need to do the following:
              *   - Use implemented functions in LinkedList to clear the data
+             * Quit the program when the user types q.
+             * break;: Ends this case block.
+             * //studentManagementSystem.clearStudents(): Calls a method you implemented to reset the linked list (head = null, etc.
              */
             studentManagementSystem.clearStudents();
             console.log("All students cleared.");

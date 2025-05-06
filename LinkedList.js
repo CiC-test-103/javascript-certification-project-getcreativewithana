@@ -59,6 +59,13 @@ class LinkedList {
      */
     addStudent(newStudent) {
         // TODO: Create a new Node and add to the end of the list
+        //🔆if (!this.head) { checks if list is empty 
+        //Wraps the newStudent in a Node. const newNode = new Node(newStudent);
+        //Checks if the list is empty (this.head is null).
+        //If empty: Set both head and tail to point to the new node.
+        //Not empty: Attach the new node to the end of the list (this.tail.next = newNode)
+
+
         const newNode = new Node(newStudent);
         if (!this.head) {
             this.head = newNode;
@@ -78,6 +85,12 @@ class LinkedList {
      */
     removeStudent(email) {
         // TODO: Find node by email and remove it from the list
+        //🔆If the list is empty (this.head === null), there’s nothing to remove, so it exits early.
+        //If the first node (head) matches the email:
+        //Move the head pointer to the next node (this.head.next)
+        //If the list is now empty (this.head === null), also set tail = null
+
+
         if (!this.head) return;
 
 
@@ -109,6 +122,11 @@ class LinkedList {
      */
     findStudent(email) {
         // TODO: Traverse list and return the student if found
+        //🔆ilet current = this.head; (FIRST NODE) 
+        //current will be used to move through each node.
+        //while (current) { Loop through the linked list until current becomes null (end of list).
+        //Check if the student's email matches the one we're looking for.
+        //If it matches, return the student object (current.data)
         let current = this.head;
         while (current) {
             if (current.data.getEmail() === email) {
@@ -127,6 +145,7 @@ class LinkedList {
      */
     clearStudents() {
             // TODO: Reset head, tail, and length
+            // 
             this.head = null;
             this.tail = null;
             this.length = 0;
@@ -135,9 +154,12 @@ class LinkedList {
          * REQUIRES:  None
          * EFFECTS:   None
          * RETURNS:   LinkedList as a String for console.log in caller
+         * this.head = null; Removes the reference to the first node in the list.
+         * this.tail = null; Clears the reference to the last node, since the list is now empty.
+         * this.length = 0; Resets the count of students in the list to 0.
          */
     displayStudents() {
-        // TODO: Return comma-separated student names
+        // TODO: Return comma-separated student names\
         let names = [];
         let current = this.head;
         while (current) {
@@ -155,6 +177,9 @@ class LinkedList {
      */
     sortStudentsByName() {
         // TODO: Gather all students into array and sort
+        // 🔆let students = []; empty array
+        //Add each Student object (current.data) to the array.
+        //Move to the next node until you reach the end.
         let students = [];
         let current = this.head;
         while (current) {
@@ -172,6 +197,7 @@ class LinkedList {
      */
     filterBySpecialization(specialization) {
         // TODO: Filter by specialization using sorted array
+        //🔆ifilter student:From that sorted list, it keeps only the students whose getSpecialization() matches the argument.
         return this.sortStudentsByName().filter(student =>
             student.getSpecialization() === specialization
         );
@@ -185,6 +211,7 @@ class LinkedList {
      */
     filterByMinAge(minAge) {
         // TODO: Filter students with year >= minAge using sorted array
+        //🔆ifilter(student => student.getYear() >= minAge) Keeps only students whose year is greater than or equal to minAge.
         return this.sortStudentsByName().filter(student =>
             student.getYear() >= minAge
         );
@@ -197,21 +224,24 @@ class LinkedList {
      * RETURNS:   None
      */
     async saveToJson(fileName) {
-        // TODO: Convert students to plain objects and write to file
-        let students = [];
-        let current = this.head;
-        while (current) {
-            const s = current.data;
-            students.push({
-                name: s.getName(),
-                year: s.getYear(),
-                email: s.getEmail(),
-                specialization: s.getSpecialization()
-            });
-            current = current.next;
+            // TODO: Convert students to plain objects and write to file
+            let students = [];
+            let current = this.head;
+            while (current) {
+                const s = current.data;
+                students.push({
+                    name: s.getName(),
+                    year: s.getYear(),
+                    email: s.getEmail(),
+                    specialization: s.getSpecialization()
+                });
+                current = current.next;
+            }
+            await fs.writeFile(fileName, JSON.stringify(students, null, 2));
         }
-        await fs.writeFile(fileName, JSON.stringify(students, null, 2));
-    }
+        // 🔆This loop goes through each node in the linked list:s is the Student object at the current node.
+        //It pushes a plain JavaScript object (no class methods) into the students array.
+        //Moves to the next node with current = current.next.
 
 
     /**
@@ -223,6 +253,13 @@ class LinkedList {
      */
     async loadFromJSON(fileName) {
         // TODO: Clear current list and load students from file
+        //🔆clears list
+        //'utf-8' means you want to read it as a text string.
+        //const studentArray = JSON.parse(data);Convert the JSON string into a JavaScript array of student objects
+        //for (const s of studentArray) { Loop over each raw student object (s) in the array.
+        //Add the student to the linked list using a method like addStudent.
+
+
         this.clearStudents();
         const data = await fs.readFile(fileName, 'utf-8');
         const studentArray = JSON.parse(data);

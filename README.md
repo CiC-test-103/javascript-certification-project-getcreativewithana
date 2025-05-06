@@ -1,7 +1,7 @@
 #ProjectUpdates
 This file has been updated. The file student.js has replaced # to _ as it's an older version of VS code. 
 
-
+Notes: 
 Constructor(name, year, email, specialization) {
     this.#name = name;
     this.#year = year;
